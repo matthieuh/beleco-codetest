@@ -1,0 +1,50 @@
+version: '3'
+volumes:
+  psql-data:
+  node_modules:
+
+services:
+  php-app:
+    build: ./php-app
+    image: phpapp
+    container_name: php-app
+    env_file:
+      - ./env
+    depends_on:
+      - postgres
+    command: ["./wait-for-postgres.sh", "", "apache2-foreground"]
+    ports:
+      - 8080:80
+    networks:
+      php-env:
+  
+  node-app:
+    build: ./node-app
+    image: nodeapp
+    container_name: node-app 
+    env_file:
+      - ./env
+    volumes:
+      - ./node-app:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    command: npm start
+    ports:
+      - 80:3000
+    networks:
+      node-env:
+
+  postgres:
+    image: postgres:9.6
+    container_name: postgres 
+    env_file:
+      - ./env
+    volumes:
+      - ./script/:/docker-entrypoint-initdb.d
+      - psql-data:/var/lib/posgresql/data
+    networks:
+      php-env:
+      node-env:
+    
+networks:
+  php-env:
+  node-env:

@@ -1,0 +1,81 @@
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f8fa;
+  margin: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 20px 0 100px 0;
+  background-image: linear-gradient(to top, transparent, #f5f8fa);
+}
+
+.repos {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 720px;
+  min-height: 564px;
+}
+
+.repos > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.repo {
+  position: relative;
+  flex: 1;
+  min-height: 170px;
+  margin-bottom: 40px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow: 0 2px 44px 0 rgba(199, 199, 200, 0.5);
+  border: solid 1px #cbd6e2;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+
+.repo-header {
+  display: flex;
+}
+
+.repo h2 {
+  flex: 1;
+  margin-top: 0;
+}
+
+.repo:hover {
+  box-shadow: 5px 8px 44px 0 rgba(199, 199, 200, 0.8);
+}
+
+.stars {
+  font-size: 16px;
+  font-weight: normal;
+  color: #313131;
+}
+
+.star {
+  color: #ffc12a;
+}
+
+.repo > p {
+  flex: 1;
+  font-size: 16px;
+  color: #313131;
+  margin-top: 0;
+}
